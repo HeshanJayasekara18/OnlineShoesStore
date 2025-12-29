@@ -7,20 +7,22 @@ import greenshoe from '../../../resource/images/greenshoe-landing.png';
 import blueshoe from '../../../resource/images/blueshoe-landing.png';
 
 export function Section1() {
+  const currentYear = new Date().getFullYear();
+
   const sliderImages = [redshoe, orangeshoe, greenshoe, blueshoe];
   return (
-    <div className="relative pt-8 md:pt-16 pb-24 overflow-hidden">
+    <div className="relative  pt-12 md:pt-16 pb-24 overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/10 blur-[120px] rounded-full animate-pulse -z-10" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-400/10 blur-[120px] rounded-full animate-bounce-slow -z-10" />
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mt-20 mx-auto px-6">
         {/* Hero Text */}
         <div className="mb-16 md:mb-24 text-center">
           <div className="inline-block mb-6 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-xl">
              <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-white">
-               Official Showcase 2024
+               Official Showcase {currentYear}
              </span>
           </div>
           
