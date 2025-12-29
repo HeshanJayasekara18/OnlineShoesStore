@@ -6,7 +6,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-950 text-white">
+    <footer className="bg-gradient-to-br from-black via-black to-black text-white">
       
       {/* Newsletter Section */}
       <div className="border-b border-blue-800/50">
