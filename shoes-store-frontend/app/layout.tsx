@@ -1,6 +1,8 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SmoothScrolling from "./components/common/SmoothScrolling";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +18,6 @@ export const metadata: Metadata = {
   title: "Online Shoe Store",
   description: "Premium footwear collection",
 };
-
-import SmoothScrolling from "./components/common/SmoothScrolling";
 
 export default function RootLayout({
   children,

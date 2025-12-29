@@ -17,6 +17,6 @@ export default function Landing() {
       <Section5 />
       <Footer />
     </div>
-  )
-};
+  );
+}
 
