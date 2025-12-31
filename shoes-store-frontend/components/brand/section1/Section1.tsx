@@ -42,7 +42,7 @@ export default function Section1() {
                 <div className={`absolute inset-0 opacity-10 md:opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-linear-to-br ${brand.color}`} />
                 
                 {/* Brand Image */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center opacity-60 md:opacity-40 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110 pointer-events-none">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center opacity-100 md:opacity-100 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110 pointer-events-none">
                   <img 
                     src={brand.image} 
                     alt={brand.name} 
