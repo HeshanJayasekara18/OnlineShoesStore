@@ -8,7 +8,7 @@ import { Footer } from "../common/footer/Footer";
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-cyan-400 to-black">
+    <div className="min-h-screen bg-linear-to-b from-cyan-400 to-black">
 
       <Section1 />
       <Section2 />

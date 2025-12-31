@@ -52,8 +52,8 @@ export default function Section3() {
       </div>
 
       {/* Extreme Decoration */}
-      <div className="absolute -bottom-48 -right-48 w-[40rem] h-[40rem] bg-red-600/10 blur-[180px] rounded-full pulse" />
-      <div className="absolute -top-48 -left-48 w-[40rem] h-[40rem] bg-rose-600/10 blur-[180px] rounded-full bounce-slow" />
+      <div className="absolute -bottom-48 -right-48 w-160 h-160 bg-red-600/10 blur-[180px] rounded-full pulse" />
+      <div className="absolute -top-48 -left-48 w-160 h-160 bg-rose-600/10 blur-[180px] rounded-full bounce-slow" />
     </section>
   );
 }

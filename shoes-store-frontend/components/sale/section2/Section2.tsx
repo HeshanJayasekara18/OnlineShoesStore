@@ -69,7 +69,7 @@ export default function Section2() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-6 p-8 bg-black/[0.03] border border-black/5 rounded-[40px] shadow-sm">
+          <div className="flex flex-col gap-6 p-8 bg-black/3 border border-black/5 rounded-[40px] shadow-sm">
             {/* Top Row: Search and Category */}
             <div className="flex flex-col lg:flex-row gap-8 items-center justify-between">
               <div className="relative w-full lg:w-96">
@@ -159,7 +159,7 @@ export default function Section2() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 min-h-[800px]">
           {currentItems.length > 0 ? (
             currentItems.map((product) => (
-              <div key={product.id} className="group relative bg-black/[0.03] border border-black/5 rounded-[40px] p-8 hover:bg-white hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] transition-all duration-700 hover:-translate-y-2 overflow-hidden">
+              <div key={product.id} className="group relative bg-black/3 border border-black/5 rounded-[40px] p-8 hover:bg-white hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] transition-all duration-700 hover:-translate-y-2 overflow-hidden">
                 <div className={`absolute top-6 right-6 px-4 py-2 rounded-2xl bg-linear-to-r ${product.colorGradient} text-white font-black text-sm z-10 shadow-lg`}>
                   -{product.discount}
                 </div>
@@ -226,7 +226,7 @@ export default function Section2() {
                   className={`w-14 h-14 rounded-3xl font-black transition-all ${
                     currentPage === i + 1 
                       ? "bg-black text-white shadow-xl scale-110" 
-                      : "bg-black/[0.03] text-black/40 hover:bg-black/10 hover:text-black border border-black/5"
+                      : "bg-black/3 text-black/40 hover:bg-black/10 hover:text-black border border-black/5"
                   }`}
                 >
                   {i + 1}

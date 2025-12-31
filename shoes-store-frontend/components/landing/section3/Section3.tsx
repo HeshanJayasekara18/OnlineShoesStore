@@ -7,7 +7,7 @@ export function Section3() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center p-8">
       <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-12 items-center">
         
         {/* Left Content */}
@@ -55,17 +55,17 @@ export function Section3() {
           {/* Floating Animation Container */}
           <div className="relative animate-float">
             {/* Phone Frame */}
-            <div className="relative w-[300px] md:w-[350px] bg-gradient-to-br from-gray-800 to-black rounded-[3rem] p-3 shadow-2xl transform hover:scale-105 transition-transform duration-500">
+            <div className="relative w-[300px] md:w-[350px] bg-linear-to-br from-gray-800 to-black rounded-[3rem] p-3 shadow-2xl transform hover:scale-105 transition-transform duration-500">
               {/* Inner Phone */}
               <div className="bg-gray-200 rounded-[2.5rem] overflow-hidden relative">
                 {/* Status Bar */}
-                <div className="absolute top-0 left-0 right-0 flex justify-between items-center px-6 py-3 text-xs text-gray-600 z-20 bg-gradient-to-b from-gray-200 to-transparent">
+                <div className="absolute top-0 left-0 right-0 flex justify-between items-center px-6 py-3 text-xs text-gray-600 z-20 bg-linear-to-b from-gray-200 to-transparent">
                   <span className="font-semibold">9:41 AM</span>
                   <span className="font-semibold">AR FITTING</span>
                 </div>
 
                 {/* AR Content */}
-                <div className="relative aspect-[9/16] bg-gradient-to-br from-gray-300 via-gray-200 to-gray-300">
+                <div className="relative aspect-9/16 bg-linear-to-br from-gray-300 via-gray-200 to-gray-300">
                   {/* Sneaker Image */}
                   <img 
                     src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=500&q=80" 
@@ -83,7 +83,7 @@ export function Section3() {
                       <div className="absolute -bottom-1 -right-1 w-8 h-8 border-r-4 border-b-4 border-cyan-400 rounded-br-lg"></div>
                       
                       {/* Scanning Line */}
-                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-scan"></div>
+                      <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-cyan-400 to-transparent animate-scan"></div>
                     </div>
                   </div>
 
@@ -104,7 +104,7 @@ export function Section3() {
             </div>
 
             {/* Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-[3rem] blur-2xl -z-10"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-cyan-400/20 to-blue-500/20 rounded-[3rem] blur-2xl -z-10"></div>
           </div>
         </div>
       </div>

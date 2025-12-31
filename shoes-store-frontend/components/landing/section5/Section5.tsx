@@ -33,10 +33,10 @@ const CategoryCard = ({ title, description, imageSrc, gradient, delay }: Categor
           />
           
           {/* Gradient Overlay */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${gradient} mix-blend-multiply transition-opacity duration-700 ${isHovered ? 'opacity-70' : 'opacity-50'}`}></div>
+          <div className={`absolute inset-0 bg-linear-to-br ${gradient} mix-blend-multiply transition-opacity duration-700 ${isHovered ? 'opacity-70' : 'opacity-50'}`}></div>
           
           {/* Dark Bottom Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
         </div>
 
         {/* Floating Sparkle Effect */}
@@ -85,7 +85,7 @@ const CategoryCard = ({ title, description, imageSrc, gradient, delay }: Categor
 
 export  function Section5() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-20 px-4 md:px-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}
@@ -97,7 +97,7 @@ export  function Section5() {
           
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 tracking-tight">
             Find Your Perfect
-            <span className="block mt-2 pb-2 bg-gradient-to-r from-blue-500 to-blue-500 bg-clip-text text-transparent">
+            <span className="block mt-2 pb-2 bg-linear-to-r from-blue-500 to-blue-500 bg-clip-text text-transparent">
               Style Match
             </span>
           </h1>

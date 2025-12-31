@@ -46,7 +46,7 @@ const ProductCard = ({ name, price, imageSrc, bgColor, delay }: ProductCardProps
         </div>
 
         {/* Hover Overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 ${isHovered ? 'opacity-100' : ''}`}>
+        <div className={`absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 ${isHovered ? 'opacity-100' : ''}`}>
           <div className="absolute bottom-6 left-6 right-6 flex justify-center gap-3">
             <button className="bg-white text-black px-6 py-2 rounded-full font-semibold text-sm hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105">
               Quick View
@@ -77,7 +77,7 @@ const ProductCard = ({ name, price, imageSrc, bgColor, delay }: ProductCardProps
 
 export function Section4() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white py-16 px-4 md:px-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-white py-16 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}
@@ -91,7 +91,7 @@ export function Section4() {
           
           {/* Decorative Line */}
           <div className="flex justify-center pt-2">
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+            <div className="w-24 h-1 bg-linear-to-r from-blue-500 to-purple-500 rounded-full"></div>
           </div>
         </div>
 
@@ -101,7 +101,7 @@ export function Section4() {
             name="Air Max Pulse"
             price="160"
             imageSrc="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80"
-            bgColor="bg-gradient-to-br from-blue-400 to-blue-500"
+            bgColor="bg-linear-to-br from-blue-400 to-blue-500"
             delay={0}
           />
 
@@ -109,7 +109,7 @@ export function Section4() {
             name="Zoom Fly 5"
             price="170"
             imageSrc="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=500&q=80"
-            bgColor="bg-gradient-to-br from-gray-300 to-gray-400"
+            bgColor="bg-linear-to-br from-gray-300 to-gray-400"
             delay={100}
           />
 
@@ -117,7 +117,7 @@ export function Section4() {
             name="React Infinity"
             price="155"
             imageSrc="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&q=80"
-            bgColor="bg-gradient-to-br from-pink-300 to-purple-300"
+            bgColor="bg-linear-to-br from-pink-300 to-purple-300"
             delay={200}
           />
         </div>
