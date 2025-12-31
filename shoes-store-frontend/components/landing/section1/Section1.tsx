@@ -37,7 +37,7 @@ export function Section1() {
           </h1>
           
           <p className="text-black text-sm md:text-lg max-w-2xl mx-auto mt-8 md:mt-12 leading-relaxed px-4 font-medium italic">
-            "Engineered for peak performance. Designed for the streets. Experience the future of footwear technology today."
+            &quot;Engineered for peak performance. Designed for the streets. Experience the future of footwear technology today.&quot;
           </p>
         </div>
 

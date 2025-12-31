@@ -141,7 +141,7 @@ export  function Section5() {
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
           <p className="text-gray-600 text-lg mb-6">
-            Can't decide? Explore all our collections
+            Can&apos;t decide? Explore all our collections
           </p>
           <button className="group bg-black text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-2 mx-auto">
             <span>View All Categories</span>

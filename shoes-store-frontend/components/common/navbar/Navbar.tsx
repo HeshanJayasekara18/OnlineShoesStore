@@ -1,12 +1,13 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { ShoppingCart, LogIn, Search, Tag } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Cart } from "../../cart/Cart";
 
 export function Navbar() {
+    const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeTab, setActiveTab] = useState("HOME");
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
@@ -23,24 +24,26 @@ export function Navbar() {
     }, []);
 
     const navLinks = [
-        { name: "HOME" },
-        { name: "LADIES" },
-        { name: "GENTS" },
-        { name: "BRANDS" },
-        { name: "SALE" },
+        { name: "HOME", path: "/" },
+        { name: "LADIES", path: "/ladies" },
+        { name: "GENTS", path: "/gents" },
+        { name: "BRANDS", path: "/brands" },
+        { name: "SALE", path: "/sale" },
     ];
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 right-0 z-100 transition-all duration-500 ${
+            <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
                 isScrolled 
                     ? "py-4 bg-black/40 backdrop-blur-xl border-b border-white/10 shadow-2xl" 
                     : "py-8 bg-transparent"
             }`}>
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-                <span className="text-white text-2xl font-black tracking-tighter drop-shadow-lg cursor-pointer hover:scale-105 transition-transform">
-                    AETHER
-                </span>
+                <Link href="/">
+                    <span className="text-white text-2xl font-black tracking-tighter drop-shadow-lg cursor-pointer hover:scale-105 transition-transform block">
+                        AETHER
+                    </span>
+                </Link>
 
                 {/* Desktop Menu */}
                 <div className={`hidden md:flex items-center gap-1 transition-all duration-500 ${
@@ -49,17 +52,17 @@ export function Navbar() {
                         : "bg-black/20 backdrop-blur-xl"
                 } rounded-full p-1.5 border border-white/10 shadow-2xl`}>
                     {navLinks.map((link) => (
-                        <button 
+                        <Link 
                             key={link.name} 
-                            onClick={() => setActiveTab(link.name)}
+                            href={link.path}
                             className={`px-8 py-2.5 rounded-full font-bold transition-all duration-300 text-xs tracking-[0.2em] ${
-                                activeTab === link.name 
+                                (pathname === link.path || (link.path === "/" && pathname === "/"))
                                     ? "bg-black text-white shadow-2xl scale-105 border border-white/20" 
                                     : "text-white/70 hover:bg-black hover:text-white hover:scale-105"
                             }`}
                         >
                             {link.name}
-                        </button>
+                        </Link>
                     ))}
                 </div>
 
@@ -108,20 +111,20 @@ export function Navbar() {
                 <div className="md:hidden absolute top-full left-6 right-6 mt-4 bg-black/95 backdrop-blur-3xl rounded-[40px] p-8 border border-white/10 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] overflow-hidden animate-in fade-in slide-in-from-top-4 duration-500 z-50">
                     <div className="flex flex-col gap-3">
                         {navLinks.map((link) => (
-                            <button
+                            <Link
                                 key={link.name}
+                                href={link.path}
                                 className={`font-black tracking-[0.2em] transition-all text-left px-8 py-5 rounded-3xl border text-sm ${
-                                    activeTab === link.name 
+                                    (pathname === link.path || (link.path === "/" && pathname === "/"))
                                         ? "bg-white/10 text-white border-white/20 shadow-inner" 
                                         : "text-white/40 border-transparent hover:bg-white/5 hover:text-white"
                                 }`}
                                 onClick={() => {
-                                    setActiveTab(link.name);
                                     setIsMenuOpen(false);
                                 }}
                             >
                                 {link.name}
-                            </button>
+                            </Link>
                         ))}
                         <button
                             className="bg-white text-black font-black tracking-[0.2em] text-center py-5 rounded-3xl mt-6 shadow-2xl hover:scale-[1.02] active:scale-95 transition-all text-sm"
@@ -132,6 +135,7 @@ export function Navbar() {
                     </div>
                 </div>
             )}
+
             </nav>
             <Cart isScrolled={isScrolled} variant="floating" />
         </>
