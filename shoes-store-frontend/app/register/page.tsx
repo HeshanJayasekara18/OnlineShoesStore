@@ -60,7 +60,7 @@ export default function RegisterPage() {
 
             {/* Right Side: Scrollable Registration Form */}
             <div 
-                className="flex-1 h-full bg-white overflow-y-auto no-scrollbar flex flex-col items-center"
+                className="flex-1 h-full bg-white overflow-y-auto no-scrollbar flex flex-col items-center overscroll-contain touch-pan-y"
                 data-lenis-prevent
             >
                 <div className="w-full max-w-md space-y-12 py-20 px-8 md:px-0">
