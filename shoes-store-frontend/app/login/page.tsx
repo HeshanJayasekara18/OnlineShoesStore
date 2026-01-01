@@ -28,7 +28,7 @@ export default function LoginPage() {
                             <span className="text-white/40 text-[11px] font-black uppercase tracking-[0.2em] hover:text-white cursor-pointer transition-colors">Exclusive</span>
                             <Link href="/">
                                 <button className="bg-white/10 backdrop-blur-md border border-white/20 px-8 py-2.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all">
-                                    Back to Shop 
+                                    Back to Shop
                                 </button>
                             </Link>
                         </div>
@@ -40,8 +40,8 @@ export default function LoginPage() {
                                 <div className="w-10 h-10 rounded-full bg-linear-to-br from-white/40 to-white/10" />
                             </div>
                             <div>
-                                <h3 className="text-black text-2xl font-black uppercase tracking-tighter leading-none mb-1">AETHER</h3>
-                                <p className="text-black/80 text-[10px] font-bold uppercase tracking-widest">Premium Footwear</p>
+                                <h3 className="text-white text-2xl font-black uppercase tracking-tighter leading-none mb-1">AETHER</h3>
+                                <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Premium Footwear</p>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@ export default function LoginPage() {
                             <input 
                                 type="email" 
                                 placeholder="Email Address" 
-                                className="w-full bg-black/3 border-none rounded-[1.25rem] py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
                             />
                         </div>
 
@@ -86,7 +86,7 @@ export default function LoginPage() {
                             <input 
                                 type="password" 
                                 placeholder="Password" 
-                                className="w-full bg-black/3 border-none rounded-[1.25rem] py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
                             />
                         </div>
 

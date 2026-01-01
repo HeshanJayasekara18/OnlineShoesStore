@@ -88,7 +88,7 @@ export default function RegisterPage() {
                                 <input 
                                     type="text" 
                                     placeholder="Full Name" 
-                                    className="w-full bg-black/3 border-none rounded-[1.25rem] py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                    className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
                                 />
                             </div>
                             <div className="relative group">
@@ -98,7 +98,7 @@ export default function RegisterPage() {
                                 <input 
                                     type="text" 
                                     placeholder="Mobile Number" 
-                                    className="w-full bg-black/3 border-none rounded-[1.25rem] py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                    className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
                                 />
                             </div>
                         </div>
@@ -110,7 +110,7 @@ export default function RegisterPage() {
                             <input 
                                 type="email" 
                                 placeholder="Email Address" 
-                                className="w-full bg-black/3 border-none rounded-[1.25rem] py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
                             />
                         </div>
 
@@ -121,7 +121,7 @@ export default function RegisterPage() {
                             <input 
                                 type="password" 
                                 placeholder="Password" 
-                                className="w-full bg-black/3 border-none rounded-[1.25rem] py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
                             />
                         </div>
 
@@ -132,7 +132,7 @@ export default function RegisterPage() {
                             <input 
                                 type="password" 
                                 placeholder="Re-enter Password" 
-                                className="w-full bg-black/3 border-none rounded-[1.25rem] py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
                             />
                         </div>
 
