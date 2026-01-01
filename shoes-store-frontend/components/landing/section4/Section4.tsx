@@ -1,7 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Star, Heart } from 'lucide-react';
+import { Star, Heart, Eye, ShoppingCart } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useCart } from '@/context/CartContext';
+import { playGenieEffect } from '@/lib/animations';
+import { products as centralProducts } from '@/lib/products';
 
 interface ProductCardProps {
   name: string;
@@ -9,11 +14,22 @@ interface ProductCardProps {
   imageSrc: string;
   bgColor: string;
   delay: number;
+  id: string;
 }
 
-const ProductCard = ({ name, price, imageSrc, bgColor, delay }: ProductCardProps) => {
+const ProductCard = ({ name, price, imageSrc, bgColor, delay, id }: ProductCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const fullProduct = centralProducts.find(p => p.id === id);
+    if (fullProduct) {
+      playGenieEffect(imageSrc, e.currentTarget as HTMLElement);
+      addToCart(fullProduct, 1, fullProduct.sizes[0], fullProduct.colors[0].name);
+    }
+  };
 
   return (
     <div 
@@ -38,20 +54,30 @@ const ProductCard = ({ name, price, imageSrc, bgColor, delay }: ProductCardProps
 
         {/* Product Image */}
         <div className="aspect-square p-8 flex items-center justify-center overflow-hidden">
-          <img 
+          <Image 
             src={imageSrc} 
             alt={name}
-            className={`w-full h-full object-contain transition-all duration-700 ease-out ${isHovered ? 'scale-110 rotate-3' : 'scale-100 rotate-0'}`}
+            width={500}
+            height={500}
+            className={`w-full h-auto object-contain transition-all duration-700 ease-out ${isHovered ? 'scale-110 rotate-3' : 'scale-100 rotate-0'}`}
           />
         </div>
 
         {/* Hover Overlay */}
         <div className={`absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 ${isHovered ? 'opacity-100' : ''}`}>
-          <div className="absolute bottom-6 left-6 right-6 flex justify-center gap-3">
-            <button className="bg-white text-black px-6 py-2 rounded-full font-semibold text-sm hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105">
-              Quick View
-            </button>
-            <button className="bg-black text-white px-6 py-2 rounded-full font-semibold text-sm hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105">
+          <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-2">
+            <Link 
+              href={`/item-description/${id}`}
+              className="bg-white text-black w-full py-2.5 rounded-xl font-bold text-xs tracking-widest uppercase flex items-center justify-center gap-2 hover:bg-gray-100 transition-all duration-300 transform hover:scale-[1.02]"
+            >
+              <Eye size={16} />
+              View Item
+            </Link>
+            <button 
+              onClick={handleAddToCart}
+              className="bg-black text-white w-full py-2.5 rounded-xl font-bold text-xs tracking-widest uppercase flex items-center justify-center gap-2 hover:bg-gray-800 transition-all duration-300 transform hover:scale-[1.02] border border-white/10"
+            >
+              <ShoppingCart size={16} />
               Add to Cart
             </button>
           </div>
@@ -98,7 +124,8 @@ export function Section4() {
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           <ProductCard
-            name="Air Max Pulse"
+            id="l1"
+            name="Aura Glide-X"
             price="160"
             imageSrc="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80"
             bgColor="bg-linear-to-br from-blue-400 to-blue-500"
@@ -106,7 +133,8 @@ export function Section4() {
           />
 
           <ProductCard
-            name="Zoom Fly 5"
+            id="g1"
+            name="Phantom Stealth"
             price="170"
             imageSrc="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=500&q=80"
             bgColor="bg-linear-to-br from-gray-300 to-gray-400"
@@ -114,7 +142,8 @@ export function Section4() {
           />
 
           <ProductCard
-            name="React Infinity"
+            id="l2"
+            name="Velvet Strider"
             price="155"
             imageSrc="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&q=80"
             bgColor="bg-linear-to-br from-pink-300 to-purple-300"

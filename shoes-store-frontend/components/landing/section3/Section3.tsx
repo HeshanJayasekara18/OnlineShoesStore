@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ArrowRight, Maximize2 } from 'lucide-react';
+import Image from 'next/image';
 
 export function Section3() {
   const [isHovered, setIsHovered] = useState(false);
@@ -67,9 +68,10 @@ export function Section3() {
                 {/* AR Content */}
                 <div className="relative aspect-9/16 bg-linear-to-br from-gray-300 via-gray-200 to-gray-300">
                   {/* Sneaker Image */}
-                  <img 
+                  <Image 
                     src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=500&q=80" 
                     alt="AR Sneaker View"
+                    fill
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                   

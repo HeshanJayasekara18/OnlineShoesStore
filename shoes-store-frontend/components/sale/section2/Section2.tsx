@@ -1,20 +1,26 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Eye, ShoppingCart } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
+import { playGenieEffect } from '@/lib/animations';
+import { products as centralProducts } from '@/lib/products';
 
 const products = [
-  { id: 1, name: "Air Max Pulse", originalPrice: 160, salePrice: 99, discount: "38%", category: "Nike", colorName: "Red", colorGradient: "from-red-500 to-orange-500", image: "/images/brands/nike.png" },
-  { id: 2, name: "Ultraboost Light", originalPrice: 190, salePrice: 120, discount: "36%", category: "Adidas", colorName: "Blue", colorGradient: "from-blue-500 to-cyan-500", image: "/images/brands/adidas.png" },
-  { id: 3, name: "RS-X Efekt", originalPrice: 110, salePrice: 65, discount: "40%", category: "Puma", colorName: "Pink", colorGradient: "from-purple-500 to-pink-500", image: "/images/brands/puma.png" },
-  { id: 4, name: "Jordan Retro 4", originalPrice: 210, salePrice: 175, discount: "16%", category: "Jordan", colorName: "Black", colorGradient: "from-red-600 to-black", image: "/images/brands/jordan.png" },
-  { id: 5, name: "Boost 350 V2", originalPrice: 230, salePrice: 150, discount: "35%", category: "Yeezy", colorName: "Gold", colorGradient: "from-orange-400 to-yellow-600", image: "/images/brands/yeezy.png" },
-  { id: 6, name: "Chuck 70", originalPrice: 90, salePrice: 45, discount: "50%", category: "Converse", colorName: "Black", colorGradient: "from-gray-400 to-black", image: "/images/brands/converse.png" },
-  { id: 7, name: "Air Force 1", originalPrice: 110, salePrice: 85, discount: "22%", category: "Nike", colorName: "White", colorGradient: "from-blue-400 to-blue-600", image: "/images/brands/nike.png" },
-  { id: 8, name: "Stan Smith", originalPrice: 100, salePrice: 55, discount: "45%", category: "Adidas", colorName: "Green", colorGradient: "from-green-400 to-emerald-600", image: "/images/brands/adidas.png" },
-  { id: 9, name: "Dunk Low", originalPrice: 120, salePrice: 95, discount: "20%", category: "Nike", colorName: "Red", colorGradient: "from-orange-500 to-red-600", image: "/images/brands/nike.png" },
-  { id: 10, name: "Suede Classic", originalPrice: 85, salePrice: 40, discount: "52%", category: "Puma", colorName: "Pink", colorGradient: "from-rose-400 to-rose-600", image: "/images/brands/puma.png" },
-  { id: 11, name: "Air Jordan 1", originalPrice: 180, salePrice: 140, discount: "22%", category: "Jordan", colorName: "Red", colorGradient: "from-red-500 to-red-800", image: "/images/brands/jordan.png" },
-  { id: 12, name: "Forum Low", originalPrice: 100, salePrice: 70, discount: "30%", category: "Adidas", colorName: "Blue", colorGradient: "from-indigo-400 to-indigo-600", image: "/images/brands/adidas.png" },
+  { id: "s1", name: "Air Max Pulse", originalPrice: 160, salePrice: 99, discount: "38%", category: "Nike", colorName: "Red", colorGradient: "from-red-500 to-orange-500", image: "/images/brands/nike.png" },
+  { id: "s2", name: "Ultraboost Light", originalPrice: 190, salePrice: 120, discount: "36%", category: "Adidas", colorName: "Blue", colorGradient: "from-blue-500 to-cyan-500", image: "/images/brands/adidas.png" },
+  { id: "s3", name: "RS-X Efekt", originalPrice: 110, salePrice: 65, discount: "40%", category: "Puma", colorName: "Pink", colorGradient: "from-purple-500 to-pink-500", image: "/images/brands/puma.png" },
+  { id: "s4", name: "Jordan Retro 4", originalPrice: 210, salePrice: 175, discount: "16%", category: "Jordan", colorName: "Black", colorGradient: "from-red-600 to-black", image: "/images/brands/jordan.png" },
+  { id: "s5", name: "Boost 350 V2", originalPrice: 230, salePrice: 150, discount: "35%", category: "Yeezy", colorName: "Gold", colorGradient: "from-orange-400 to-yellow-600", image: "/images/brands/yeezy.png" },
+  { id: "s6", name: "Chuck 70", originalPrice: 90, salePrice: 45, discount: "50%", category: "Converse", colorName: "Black", colorGradient: "from-gray-400 to-black", image: "/images/brands/converse.png" },
+  { id: "s7", name: "Air Force 1", originalPrice: 110, salePrice: 85, discount: "22%", category: "Nike", colorName: "White", colorGradient: "from-blue-400 to-blue-600", image: "/images/brands/nike.png" },
+  { id: "s8", name: "Stan Smith", originalPrice: 100, salePrice: 55, discount: "45%", category: "Adidas", colorName: "Green", colorGradient: "from-green-400 to-emerald-600", image: "/images/brands/adidas.png" },
+  { id: "s9", name: "Dunk Low", originalPrice: 120, salePrice: 95, discount: "20%", category: "Nike", colorName: "Red", colorGradient: "from-orange-500 to-red-600", image: "/images/brands/nike.png" },
+  { id: "s10", name: "Suede Classic", originalPrice: 85, salePrice: 40, discount: "52%", category: "Puma", colorName: "Pink", colorGradient: "from-rose-400 to-rose-600", image: "/images/brands/puma.png" },
+  { id: "s11", name: "Air Jordan 1", originalPrice: 180, salePrice: 140, discount: "22%", category: "Jordan", colorName: "Red", colorGradient: "from-red-500 to-red-800", image: "/images/brands/jordan.png" },
+  { id: "s12", name: "Forum Low", originalPrice: 100, salePrice: 70, discount: "30%", category: "Adidas", colorName: "Blue", colorGradient: "from-indigo-400 to-indigo-600", image: "/images/brands/adidas.png" },
 ];
 
 const categories = ["ALL", "NIKE", "ADIDAS", "PUMA", "JORDAN", "YEEZY", "CONVERSE"];
@@ -27,6 +33,16 @@ export default function Section2() {
   const [selectedColor, setSelectedColor] = useState("ALL");
   const [maxPrice, setMaxPrice] = useState(250);
   const [currentPage, setCurrentPage] = useState(1);
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e: React.MouseEvent, productId: string, productImage: string) => {
+    e.preventDefault();
+    const fullProduct = centralProducts.find(p => p.id === productId);
+    if (fullProduct) {
+      playGenieEffect(productImage, e.currentTarget as HTMLElement);
+      addToCart(fullProduct, 1, fullProduct.sizes[0], fullProduct.colors[0].name);
+    }
+  };
 
   const filteredProducts = useMemo(() => {
     return products.filter(product => {
@@ -166,9 +182,11 @@ export default function Section2() {
                 
                 <div className="relative h-64 mb-10 flex items-center justify-center">
                   <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 bg-linear-to-br ${product.colorGradient} blur-3xl`} />
-                  <img 
+                  <Image 
                     src={product.image} 
                     alt={product.name} 
+                    width={500}
+                    height={500}
                     className="w-full h-full object-contain group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 drop-shadow-2xl"
                   />
                 </div>
@@ -185,9 +203,22 @@ export default function Section2() {
                     <span className="text-xl font-bold text-black/20 line-through">${product.originalPrice}</span>
                   </div>
                   
-                  <button className="w-full py-4 rounded-3xl border-2 border-black/5 font-black uppercase tracking-widest group-hover:bg-black group-hover:text-white group-hover:border-black transition-all duration-500 shadow-sm active:scale-95">
-                    Add to Cart
-                  </button>
+                  <div className="flex flex-col gap-3">
+                    <button 
+                      onClick={(e) => handleAddToCart(e, product.id, product.image)}
+                      className="w-full py-4 rounded-3xl bg-black text-white font-black uppercase tracking-widest hover:bg-gray-800 transition-all duration-300 shadow-lg active:scale-95 flex items-center justify-center gap-2"
+                    >
+                      <ShoppingCart size={18} />
+                      Add to Cart
+                    </button>
+                    <Link 
+                      href={`/item-description/${product.id}`}
+                      className="w-full py-4 rounded-3xl border-2 border-black/5 text-black font-black uppercase tracking-widest hover:bg-black/5 transition-all duration-300 flex items-center justify-center gap-2"
+                    >
+                      <Eye size={18} />
+                      View Item
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))

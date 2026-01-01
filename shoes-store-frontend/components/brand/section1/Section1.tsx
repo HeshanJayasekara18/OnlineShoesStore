@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 
 
@@ -43,10 +44,13 @@ export default function Section1() {
                 
                 {/* Brand Image */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center opacity-100 md:opacity-100 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110 pointer-events-none">
-                  <img 
+                  <Image 
                     src={brand.image} 
                     alt={brand.name} 
-                    className="w-3/4 h-3/4 object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-all duration-700 -rotate-12 group-hover:rotate-0"
+                    width={600}
+                    height={600}
+                    className="w-3/4 h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-all duration-700 -rotate-12 group-hover:rotate-0"
+                    priority={index < 3}
                   />
                 </div>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 export default function Section3() {
   return (
@@ -43,10 +44,10 @@ export default function Section3() {
             Secure Your Pair
           </button>
           <div className="flex items-center justify-center gap-8 opacity-40 grayscale group-hover:grayscale-0 transition-all">
-            <img src="/images/brands/nike.png" alt="Nike" className="h-4 md:h-6 object-contain" />
-            <img src="/images/brands/adidas.png" alt="Adidas" className="h-4 md:h-6 object-contain" />
-            <img src="/images/brands/jordan.png" alt="Jordan" className="h-4 md:h-6 object-contain" />
-            <img src="/images/brands/puma.png" alt="Puma" className="h-4 md:h-6 object-contain" />
+            <Image src="/images/brands/nike.png" alt="Nike" width={100} height={40} className="h-4 md:h-6 w-auto object-contain" />
+            <Image src="/images/brands/adidas.png" alt="Adidas" width={100} height={40} className="h-4 md:h-6 w-auto object-contain" />
+            <Image src="/images/brands/jordan.png" alt="Jordan" width={100} height={40} className="h-4 md:h-6 w-auto object-contain" />
+            <Image src="/images/brands/puma.png" alt="Puma" width={100} height={40} className="h-4 md:h-6 w-auto object-contain" />
           </div>
         </div>
       </div>

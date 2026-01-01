@@ -4,6 +4,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/common/SmoothScrolling";
 import { Navbar } from "@/components/common/navbar/Navbar";
+import { CartProvider } from "@/context/CartContext";
+import { AuthProvider } from "@/context/AuthContext";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,8 +32,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SmoothScrolling>
-          <Navbar />
-          {children}
+          <CartProvider>
+            <AuthProvider>
+              <Navbar />
+              <CartDrawer />
+              {children}
+            </AuthProvider>
+          </CartProvider>
         </SmoothScrolling>
       </body>
     </html>
