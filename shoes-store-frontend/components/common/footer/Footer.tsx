@@ -1,9 +1,23 @@
 'use client';
-import React from 'react';
-import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin, ArrowRight, Loader2, Check } from 'lucide-react';
+import Link from 'next/link';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus('loading');
+    setTimeout(() => {
+      setStatus('success');
+      setEmail('');
+      setTimeout(() => setStatus('idle'), 3000);
+    }, 1500);
+  };
 
   return (
     <footer className="bg-gradient-to-br from-black via-black to-black text-white">
@@ -16,17 +30,32 @@ export function Footer() {
               <h3 className="text-2xl md:text-3xl font-bold mb-2">Stay In The Loop</h3>
               <p className="text-blue-200">Subscribe to get special offers, new releases and more.</p>
             </div>
-            <div className="flex w-full md:w-auto gap-2">
+            <form onSubmit={handleSubscribe} className="flex w-full md:w-auto gap-2">
               <input 
                 type="email" 
                 placeholder="Enter your email"
                 className="flex-1 md:w-80 px-6 py-3 rounded-full bg-blue-900/50 border border-blue-700/50 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={status !== 'idle'}
               />
-              <button className="bg-white text-blue-950 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
-                <span className="hidden sm:inline">Subscribe</span>
-                <ArrowRight size={20} />
+              <button 
+                type="submit"
+                disabled={status !== 'idle'}
+                className="bg-white text-blue-950 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 disabled:opacity-50"
+              >
+                {status === 'loading' ? (
+                  <Loader2 size={20} className="animate-spin" />
+                ) : status === 'success' ? (
+                  <Check size={20} className="text-green-600" />
+                ) : (
+                  <>
+                    <span className="hidden sm:inline">Subscribe</span>
+                    <ArrowRight size={20} />
+                  </>
+                )}
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -63,11 +92,18 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-bold mb-6 text-blue-100">Shop</h4>
             <ul className="space-y-3">
-              {['New Arrivals', 'Men', 'Women', 'Kids', 'Sale', 'Collections'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-blue-200 hover:text-white hover:translate-x-2 inline-block transition-all duration-300">
-                    {item}
-                  </a>
+              {[
+                { name: 'New Arrivals', href: '/#gents-collection' },
+                { name: 'Men', href: '/gents' },
+                { name: 'Women', href: '/ladies' },
+                { name: 'Kids', href: '/gents' },
+                { name: 'Sale', href: '/sale' },
+                { name: 'Collections', href: '/#gents-collection' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-blue-200 hover:text-white hover:translate-x-2 inline-block transition-all duration-300">
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>

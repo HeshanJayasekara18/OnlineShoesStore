@@ -34,7 +34,10 @@ export default function Section1() {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-              <button className="px-10 py-5 rounded-full bg-white text-black font-black uppercase tracking-widest hover:bg-amber-600 hover:text-white transition-all duration-500 shadow-2xl active:scale-95">
+              <button 
+                onClick={() => document.getElementById('gents-collection')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-10 py-5 rounded-full bg-white text-black font-black uppercase tracking-widest hover:bg-amber-600 hover:text-white transition-all duration-500 shadow-2xl active:scale-95"
+              >
                 Shop Now
               </button>
               <button className="px-10 py-5 rounded-full bg-white/5 text-white border border-white/10 font-black uppercase tracking-widest hover:bg-white/10 transition-all duration-500 backdrop-blur-md">

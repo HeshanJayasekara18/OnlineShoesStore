@@ -153,7 +153,7 @@ export function Section4() {
 
         {/* View All Button */}
         <div className="flex justify-center mt-12">
-          <button className="group bg-black text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-2">
+          <Link href="/gents" className="group bg-black text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-2">
             <span>View All Products</span>
             <svg 
               className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
@@ -163,7 +163,7 @@ export function Section4() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

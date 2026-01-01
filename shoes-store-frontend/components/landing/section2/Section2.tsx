@@ -100,7 +100,7 @@ const SneakerCard = ({ name, price, color, imageSrc, isNew, bgColor, id }: Sneak
 
 export function Section2() {
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 py-12 px-4">
+    <div id="featured-selection" className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-center mb-8 flex-wrap gap-4">

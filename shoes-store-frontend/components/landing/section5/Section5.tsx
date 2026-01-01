@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import Link from 'next/link';
 import Image from 'next/image';
 
 interface CategoryCardProps {
@@ -10,9 +11,10 @@ interface CategoryCardProps {
   imageSrc: string;
   gradient: string;
   delay: number;
+  href: string;
 }
 
-const CategoryCard = ({ title, description, imageSrc, gradient, delay }: CategoryCardProps) => {
+const CategoryCard = ({ title, description, imageSrc, gradient, delay, href }: CategoryCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -69,13 +71,16 @@ const CategoryCard = ({ title, description, imageSrc, gradient, delay }: Categor
           </p>
 
           {/* CTA Button */}
-          <button className={`group/btn flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform ${isHovered ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'} w-fit`}>
+          <Link 
+            href={href}
+            className={`group/btn flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform ${isHovered ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'} w-fit`}
+          >
             <span>Shop Now</span>
             <ArrowRight 
               size={22} 
               className="transition-transform duration-300 group-hover/btn:translate-x-1"
             />
-          </button>
+          </Link>
         </div>
 
         {/* Animated Border */}
@@ -87,7 +92,7 @@ const CategoryCard = ({ title, description, imageSrc, gradient, delay }: Categor
 
 export  function Section5() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-20 px-4 md:px-8">
+    <div id="section5" className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}
@@ -119,6 +124,7 @@ export  function Section5() {
             imageSrc="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=600&q=80"
             gradient="from-pink-500/60 to-rose-500/60"
             delay={0}
+            href="/ladies"
           />
 
           {/* Gents Category */}
@@ -128,6 +134,7 @@ export  function Section5() {
             imageSrc="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600&q=80"
             gradient="from-blue-600/60 to-cyan-500/60"
             delay={150}
+            href="/gents"
           />
 
           {/* Kids Category */}
@@ -137,6 +144,7 @@ export  function Section5() {
             imageSrc="https://images.unsplash.com/photo-1514989940723-e8e51635b782?w=600&q=80"
             gradient="from-amber-500/60 to-orange-500/60"
             delay={300}
+            href="/gents"
           />
         </div>
 

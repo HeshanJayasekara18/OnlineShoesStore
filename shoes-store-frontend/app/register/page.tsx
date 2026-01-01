@@ -1,12 +1,65 @@
 'use client';
 
-import React from 'react';
-import { ArrowRight, ArrowLeft, Mail, Phone, Lock, User, Github } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, ArrowLeft, Mail, Phone, Lock, User, Github, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '../../context/AuthContext';
 import regimg from '../../public/images/regimg.jpg';
 
 export default function RegisterPage() {
+    const { register } = useAuth();
+    const router = useRouter();
+    const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        agree: false
+    });
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError('');
+
+        if (!formData.name || !formData.email || !formData.password) {
+            setError('Please fill in required fields');
+            return;
+        }
+
+        if (formData.password !== formData.confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
+
+        if (!formData.agree) {
+            setError('You must agree to the conditions');
+            return;
+        }
+
+        setLoading(true);
+        try {
+            await register(formData);
+            router.push('/');
+        } catch (err: any) {
+            setError(err.message || 'Registration failed');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value, type, checked } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value
+        }));
+    };
+
     return (
         <div className="h-screen w-full bg-white flex overflow-hidden">
             {/* Left Side: Fixed Featured Collection */}
@@ -78,17 +131,27 @@ export default function RegisterPage() {
                         <p className="text-[11px] font-bold text-black/40 uppercase tracking-[0.2em]">Join the AETHER community today</p>
                     </div>
 
+                    {error && (
+                        <div className="bg-red-50 border border-red-100 p-4 rounded-2xl">
+                            <p className="text-red-500 text-[10px] font-black uppercase tracking-widest text-center">{error}</p>
+                        </div>
+                    )}
+
                     {/* Form */}
-                    <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+                    <form className="space-y-5" onSubmit={handleSubmit}>
                         <div className="grid grid-cols-2 gap-5">
                             <div className="relative group">
                                 <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none">
                                     <User size={16} className="text-black/20 group-focus-within:text-black transition-colors" />
                                 </div>
                                 <input 
+                                    name="name"
                                     type="text" 
                                     placeholder="Full Name" 
                                     className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    disabled={loading}
                                 />
                             </div>
                             <div className="relative group">
@@ -96,9 +159,13 @@ export default function RegisterPage() {
                                     <Phone size={16} className="text-black/20 group-focus-within:text-black transition-colors" />
                                 </div>
                                 <input 
+                                    name="phone"
                                     type="text" 
                                     placeholder="Mobile Number" 
                                     className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    disabled={loading}
                                 />
                             </div>
                         </div>
@@ -108,9 +175,13 @@ export default function RegisterPage() {
                                 <Mail size={16} className="text-black/20 group-focus-within:text-black transition-colors" />
                             </div>
                             <input 
+                                name="email"
                                 type="email" 
                                 placeholder="Email Address" 
                                 className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                value={formData.email}
+                                onChange={handleChange}
+                                disabled={loading}
                             />
                         </div>
 
@@ -119,9 +190,13 @@ export default function RegisterPage() {
                                 <Lock size={16} className="text-black/20 group-focus-within:text-black transition-colors" />
                             </div>
                             <input 
+                                name="password"
                                 type="password" 
                                 placeholder="Password" 
                                 className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                value={formData.password}
+                                onChange={handleChange}
+                                disabled={loading}
                             />
                         </div>
 
@@ -130,19 +205,34 @@ export default function RegisterPage() {
                                 <Lock size={16} className="text-black/20 group-focus-within:text-black transition-colors" />
                             </div>
                             <input 
+                                name="confirmPassword"
                                 type="password" 
                                 placeholder="Re-enter Password" 
                                 className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                value={formData.confirmPassword}
+                                onChange={handleChange}
+                                disabled={loading}
                             />
                         </div>
 
                         <div className="flex items-center gap-4 py-3">
-                            <input type="checkbox" className="w-5 h-5 rounded-lg border-black/10 text-black focus:ring-black/5 cursor-pointer" />
+                            <input 
+                                name="agree"
+                                type="checkbox" 
+                                className="w-5 h-5 rounded-lg border-black/10 text-black focus:ring-black/5 cursor-pointer" 
+                                checked={formData.agree}
+                                onChange={handleChange}
+                                disabled={loading}
+                            />
                             <span className="text-[11px] font-bold text-black/40 uppercase tracking-widest leading-none">I agree to the <span className="text-black underline cursor-pointer font-black">Terms & Conditions</span></span>
                         </div>
 
-                        <button className="w-full bg-black text-white py-6 rounded-3xl font-black uppercase text-[12px] tracking-[0.4em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all mt-6 shadow-black/20">
-                            Create Account
+                        <button 
+                            type="submit"
+                            disabled={loading}
+                            className="w-full bg-black text-white py-6 rounded-3xl font-black uppercase text-[12px] tracking-[0.4em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all mt-6 shadow-black/20 flex items-center justify-center disabled:opacity-50 disabled:hover:scale-100"
+                        >
+                            {loading ? <Loader2 className="animate-spin text-white" size={20} /> : 'Create Account'}
                         </button>
                     </form>
 

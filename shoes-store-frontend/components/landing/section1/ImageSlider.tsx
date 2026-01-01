@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 
 interface ImageSliderProps {
@@ -127,18 +128,18 @@ export function ImageSlider({
               New Collection 2026
             </span>
             <h2 className="text-xl sm:text-3xl md:text-5xl font-black text-black leading-tight drop-shadow-sm">
-              FEEL THE BURN<br />
+              THE WEEKLY <br />
               <span className="text-gray-900">
-                UNLEASH SPEED
+                DROP
               </span>
             </h2>
             <div className="flex items-center gap-4 pt-1 md:pt-2">
-              <button className="bg-black text-white px-4 py-2 md:px-8 md:py-4 rounded-xl md:rounded-2xl font-bold hover:bg-gray-800 transition-all active:scale-95 text-[10px] md:text-base shadow-lg shadow-black/20 group/btn flex items-center gap-2">
+              <Link href="/#featured-selection" className="bg-black text-white px-4 py-2 md:px-8 md:py-4 rounded-xl md:rounded-2xl font-bold hover:bg-gray-800 transition-all active:scale-95 text-[10px] md:text-base shadow-lg shadow-black/20 group/btn flex items-center gap-2">
                 SHOP NOW
                 <svg className="w-3 h-3 md:w-4 md:h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

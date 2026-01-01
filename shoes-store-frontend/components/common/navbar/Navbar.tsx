@@ -3,10 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 import { Cart } from "../../cart/Cart";
+import { User, LogOut } from "lucide-react";
 
 export function Navbar() {
     const pathname = usePathname();
+    const { user, logout, isAuthenticated } = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     useEffect(() => {
@@ -26,8 +29,8 @@ export function Navbar() {
 
     const navLinks = [
         { name: "HOME", path: "/" },
-        { name: "LADIES", path: "/ladies#ladies-collection" },
-        { name: "GENTS", path: "/gents#gents-collection" },
+        { name: "LADIES", path: "/#section5" },
+        { name: "GENTS", path: "/#section5" },
         { name: "BRANDS", path: "/brands" },
         { name: "SALE", path: "/sale" },
     ];
@@ -71,20 +74,40 @@ export function Navbar() {
                 </div>
 
                 <div className="hidden md:flex items-center gap-6">
-                    <Link 
-                        href="/login"
-                        className="text-white/70 hover:text-white font-bold text-xs tracking-[0.2em] transition-colors"
-                    >
-                        Sign In
-                    </Link>
+                    {isAuthenticated ? (
+                        <div className="flex items-center gap-6">
+                            <div className="flex items-center gap-2 text-white/70 hover:text-white transition-colors cursor-default">
+                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+                                    <User size={14} />
+                                </div>
+                                <span className="text-[10px] font-black uppercase tracking-widest">{user?.name}</span>
+                            </div>
+                            <button 
+                                onClick={logout}
+                                className="text-white/40 hover:text-white transition-all flex items-center gap-2 group"
+                            >
+                                <LogOut size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                                <span className="text-[10px] font-black uppercase tracking-widest">Logout</span>
+                            </button>
+                        </div>
+                    ) : (
+                        <Link 
+                            href="/login"
+                            className="text-white/70 hover:text-white font-bold text-xs tracking-[0.2em] transition-colors"
+                        >
+                            Sign In
+                        </Link>
+                    )}
                     <div className="flex items-center gap-4">
                         <Cart isScrolled={isScrolled} variant="navbar-desktop" />
-                        <Link 
-                            href="/register"
-                            className="bg-black text-white px-8 py-2.5 rounded-full font-bold transition-all text-xs tracking-[0.2em] border border-white/20 hover:scale-105 shadow-xl hover:bg-white hover:text-black duration-300"
-                        >
-                            Register
-                        </Link>
+                        {!isAuthenticated && (
+                            <Link 
+                                href="/register"
+                                className="bg-black text-white px-8 py-2.5 rounded-full font-bold transition-all text-xs tracking-[0.2em] border border-white/20 hover:scale-105 shadow-xl hover:bg-white hover:text-black duration-300"
+                            >
+                                Register
+                            </Link>
+                        )}
                     </div>
                 </div>
 

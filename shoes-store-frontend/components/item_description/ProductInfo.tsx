@@ -16,7 +16,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
     const [selectedColor, setSelectedColor] = useState(product.colors[0].name);
     const [quantity, setQuantity] = useState(1);
     const [isWishlisted, setIsWishlisted] = useState(false);
-    const { addToCart } = useCart();
+    const { addToCart, setIsCartOpen } = useCart();
     const addToCartRef = React.useRef<HTMLButtonElement>(null);
 
     const handleAddToCart = () => {
@@ -139,7 +139,13 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             {/* Actions */}
             <div className="space-y-4 pt-4">
                 <div className="flex gap-4">
-                    <button className="flex-2 bg-black text-white py-6 rounded-4xl font-black uppercase text-[11px] tracking-[0.3em] flex items-center justify-center gap-3 shadow-2xl hover:scale-[1.02] active:scale-95 transition-all">
+                    <button 
+                        onClick={() => {
+                            addToCart(product, quantity, selectedSize, selectedColor);
+                            setIsCartOpen(true);
+                        }}
+                        className="flex-2 bg-black text-white py-6 rounded-4xl font-black uppercase text-[11px] tracking-[0.3em] flex items-center justify-center gap-3 shadow-2xl hover:scale-[1.02] active:scale-95 transition-all"
+                    >
                         Buy Now
                     </button>
                     <button 

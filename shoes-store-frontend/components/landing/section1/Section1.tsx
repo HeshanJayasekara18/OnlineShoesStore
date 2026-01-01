@@ -9,7 +9,7 @@ import blueshoe from '../../../resource/images/blueshoe-landing.png';
 export function Section1() {
   const currentYear = new Date().getFullYear();
 
-  const sliderImages = [redshoe, orangeshoe, greenshoe, blueshoe];
+  const sliderImages = [orangeshoe, redshoe, greenshoe, blueshoe];
   return (
     <div className="relative  pt-12 md:pt-16 pb-24 overflow-hidden">
       {/* Decorative Background Elements */}
@@ -22,22 +22,22 @@ export function Section1() {
         <div className="mb-16 md:mb-24 text-center">
           <div className="inline-block mb-6 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-xl">
              <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-white">
-               Official Showcase {currentYear}
+               Aether Official Showcase {currentYear}
              </span>
           </div>
           
           <h1 className="text-5xl sm:text-7xl md:text-9xl font-black text-black leading-[0.85] mb-8 uppercase tracking-tighter">
-            NEXT GEN<br />
+            DEFINE YOUR<br />
             <span className="relative inline-block px-4 py-2 mt-4">
               <span className="relative z-10 text-white">
-                COMFORT
+                STRIDE
               </span>
               <div className="absolute inset-0 bg-linear-to-r from-cyan-500/10 to-blue-600/10 blur-xl -z-10" />
             </span>
           </h1>
           
           <p className="text-black text-sm md:text-lg max-w-2xl mx-auto mt-8 md:mt-12 leading-relaxed px-4 font-medium italic">
-            &quot;Engineered for peak performance. Designed for the streets. Experience the future of footwear technology today.&quot;
+            &quot;Bold aesthetics for the modern creator. The perfect fusion of street-ready looks and all-day performance comfort.&quot;
           </p>
         </div>
 

@@ -1,12 +1,39 @@
 'use client';
 
-import React from 'react';
-import { Mail, Lock, Github, Phone, ArrowLeft, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Lock, Github, Phone, ArrowLeft, ArrowRight, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '../../context/AuthContext';
 import regimg from '../../public/images/regimg.jpg';
 
 export default function LoginPage() {
+    const { login } = useAuth();
+    const router = useRouter();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError('');
+        setLoading(true);
+
+        try {
+            if (!email || !password) {
+                throw new Error('Please fill in all fields');
+            }
+            await login(email, password);
+            router.push('/');
+        } catch (err: any) {
+            setError(err.message || 'Invalid credentials');
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="h-screen w-full bg-white flex overflow-hidden">
             {/* Left Side: Fixed Storytelling */}
@@ -67,7 +94,13 @@ export default function LoginPage() {
                         <p className="text-[11px] font-bold text-black/40 uppercase tracking-[0.2em]">Access your premium collection</p>
                     </div>
 
-                    <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+                    {error && (
+                        <div className="bg-red-50 border border-red-100 p-4 rounded-2xl">
+                            <p className="text-red-500 text-[10px] font-black uppercase tracking-widest text-center">{error}</p>
+                        </div>
+                    )}
+
+                    <form className="space-y-5" onSubmit={handleSubmit}>
                         <div className="relative group">
                             <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none">
                                 <Mail size={16} className="text-black/20 group-focus-within:text-black transition-colors" />
@@ -76,6 +109,9 @@ export default function LoginPage() {
                                 type="email" 
                                 placeholder="Email Address" 
                                 className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                disabled={loading}
                             />
                         </div>
 
@@ -87,6 +123,9 @@ export default function LoginPage() {
                                 type="password" 
                                 placeholder="Password" 
                                 className="w-full bg-black/3 border-none rounded-3xl py-5 pl-14 pr-6 text-xs font-bold text-black focus:ring-2 focus:ring-black/5 transition-all outline-none placeholder:text-black/20"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                disabled={loading}
                             />
                         </div>
 
@@ -94,8 +133,12 @@ export default function LoginPage() {
                             <span className="text-[10px] font-bold text-black/40 uppercase tracking-[0.2em] hover:text-black cursor-pointer transition-colors">Forgot Password?</span>
                         </div>
 
-                        <button className="w-full bg-black text-white py-6 rounded-3xl font-black uppercase text-[12px] tracking-[0.4em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all mt-6 shadow-black/20">
-                            Sign In
+                        <button 
+                            type="submit"
+                            disabled={loading}
+                            className="w-full bg-black text-white py-6 rounded-3xl font-black uppercase text-[12px] tracking-[0.4em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all mt-6 shadow-black/20 flex items-center justify-center disabled:opacity-50 disabled:hover:scale-100"
+                        >
+                            {loading ? <Loader2 className="animate-spin text-white" size={20} /> : 'Sign In'}
                         </button>
                     </form>
 
