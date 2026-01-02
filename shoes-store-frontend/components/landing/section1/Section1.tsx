@@ -27,10 +27,10 @@ export function Section1() {
           </div>
           
           <h1 className="text-5xl sm:text-7xl md:text-9xl font-black text-black leading-[0.85] mb-8 uppercase tracking-tighter">
-            DEFINE YOUR<br />
+            Next Gen <br />
             <span className="relative inline-block px-4 py-2 mt-4">
               <span className="relative z-10 text-white">
-                STRIDE
+                Comfort
               </span>
               <div className="absolute inset-0 bg-linear-to-r from-cyan-500/10 to-blue-600/10 blur-xl -z-10" />
             </span>
