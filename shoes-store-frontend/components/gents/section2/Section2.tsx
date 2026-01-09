@@ -76,7 +76,7 @@ export default function Section2() {
     }
   };
 
-  const filteredProducts = useMemo(() => {
+  const filteredProducts = useMemo(() => { 
     return gentsProducts.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesBrand = selectedBrand === "ALL" || product.brand.toUpperCase() === selectedBrand;

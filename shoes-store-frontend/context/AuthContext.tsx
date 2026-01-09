@@ -17,7 +17,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = useCallback(async (email: string, password: string) => {
-    // Mock login logic
+    // Mock login  
     console.log('Logging in with:', email);
     const mockUser = { email, name: email.split('@')[0] };
     setUser(mockUser);

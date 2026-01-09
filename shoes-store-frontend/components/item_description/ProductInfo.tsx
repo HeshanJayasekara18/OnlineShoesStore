@@ -16,7 +16,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
     const [selectedColor, setSelectedColor] = useState(product.colors[0].name);
     const [quantity, setQuantity] = useState(1);
     const [isWishlisted, setIsWishlisted] = useState(false);
-    const { addToCart, setIsCartOpen } = useCart();
+    const { addToCart, setIsCartOpen } = useCart(); 
     const addToCartRef = React.useRef<HTMLButtonElement>(null);
 
     const handleAddToCart = () => {

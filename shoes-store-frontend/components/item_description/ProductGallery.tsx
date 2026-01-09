@@ -7,7 +7,7 @@ interface ProductGalleryProps {
     images: string[];
     name: string;
 }
-
+ 
 export default function ProductGallery({ images, name }: ProductGalleryProps) {
     const [selectedImage, setSelectedImage] = useState(0);
 

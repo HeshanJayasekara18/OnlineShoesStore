@@ -6,7 +6,7 @@ const Shoe3D = dynamic(() => import("./Shoe3D"), { ssr: false });
 
 export default function Section1() {
   return (
-    <main className="relative pt-32 pb-40 px-6 overflow-hidden">
+    <main id="section1" className="relative pt-32 pb-40 px-6 overflow-hidden">
       {/* Decorative Background Glows */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-amber-500/10 blur-[150px] rounded-full animate-pulse -z-10" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-600/10 blur-[150px] rounded-full animate-bounce-slow -z-10" />

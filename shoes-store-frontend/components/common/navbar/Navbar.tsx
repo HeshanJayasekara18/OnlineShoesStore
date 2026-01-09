@@ -29,8 +29,8 @@ export function Navbar() {
 
     const navLinks = [
         { name: "HOME", path: "/" },
-        { name: "LADIES", path: "/ladies" },
-        { name: "GENTS", path: "/gents" },
+        { name: "LADIES", path: "/ladies#section1" },
+        { name: "GENTS", path: "/gents#section1" },
         { name: "BRANDS", path: "/brands" },
         { name: "SALE", path: "/sale" },
     ];
