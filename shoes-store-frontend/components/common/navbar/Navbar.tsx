@@ -31,7 +31,7 @@ export function Navbar() {
         { name: "HOME", path: "/" },
         { name: "LADIES", path: "/ladies#section1" },
         { name: "GENTS", path: "/gents#section1" },
-        { name: "BRANDS", path: "/brands" },
+        { name: "BRANDS", path: "/brands#section1" },
         { name: "SALE", path: "/sale" },
     ];
 
@@ -63,7 +63,8 @@ export function Navbar() {
                                 (pathname === link.path || 
                                  (link.path === "/" && pathname === "/") ||
                                  (link.path.startsWith("/ladies") && pathname.startsWith("/ladies")) ||
-                                 (link.path.startsWith("/gents") && pathname.startsWith("/gents")))
+                                 (link.path.startsWith("/gents") && pathname.startsWith("/gents")) ||
+                                 (link.path.startsWith("/brands") && pathname.startsWith("/brands")))
                                     ? "bg-black text-white shadow-2xl scale-105 border border-white/20" 
                                     : "text-white/70 hover:bg-black hover:text-white hover:scale-105"
                             }`}
@@ -156,7 +157,8 @@ export function Navbar() {
                                     (pathname === link.path || 
                                      (link.path === "/" && pathname === "/") ||
                                      (link.path.startsWith("/ladies") && pathname.startsWith("/ladies")) ||
-                                     (link.path.startsWith("/gents") && pathname.startsWith("/gents")))
+                                     (link.path.startsWith("/gents") && pathname.startsWith("/gents")) ||
+                                     (link.path.startsWith("/brands") && pathname.startsWith("/brands")))
                                         ? "bg-white/10 text-white border-white/20 shadow-inner" 
                                         : "text-white/40 border-transparent hover:bg-white/5 hover:text-white"
                                 }`}
